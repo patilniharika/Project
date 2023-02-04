@@ -5,10 +5,15 @@ import ColImage from './ColImage';
 
 export default function Pictureleft(props) {
     const items = props.image; 
+
     let mdVal = 6;
 
     if(items.length === 1){
         mdVal = 12;
+    }
+
+    const handleClick = () =>{
+        window.location.href = props.click;
     }
 
     const ItemList = () => {
@@ -45,7 +50,8 @@ export default function Pictureleft(props) {
                         {props.description}
                     </p>
 
-                    <button className="my-4 font-bold text-black bg-transparent border-b-4 hover:border-b-0 border-b-rose-500">
+                    <button onClick={handleClick}
+                    className="my-4 font-bold text-black bg-transparent border-b-4 hover:border-b-0 border-b-rose-500">
                         {props.button}
                     </button>
 

@@ -3,6 +3,11 @@ import { Col, Container, Row } from "react-bootstrap";
 //  bg-[url('./img/bg11.png')] bg-cover bg-no-repeat
 
 export default function Footer(){
+
+    const handleClick = () =>{
+        window.location.href = '/reservations';
+    }
+
     return(
         <Container fluid className="pt-16 px-10 md:px-16">
             <Row className="text-center head text-xl">
@@ -27,7 +32,8 @@ export default function Footer(){
                 <Col md={true}>
                     RESERVE
                     <br />
-                    <button className="my-4 text-base bg-transparent border-b-4 hover:border-0 border-b-rose-500">
+                    <button onClick={handleClick}
+                    className="my-4 text-base bg-transparent border-b-4 hover:border-0 border-b-rose-500">
                         DISCOVER MORE
                     </button>
                 </Col>
@@ -35,7 +41,7 @@ export default function Footer(){
                     FOLLOW
                     <div className="text-base py-4">
                         <button className="bg-transparent pr-1">
-                            <svg class=" fill-[#3c5a9a] hover:fill-black" 
+                            <svg className=" fill-[#3c5a9a] hover:fill-black" 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="28" height="28" 
                             viewBox="88.428 12.828 107.543 207.085">
@@ -45,7 +51,7 @@ export default function Footer(){
                             </svg>
                         </button>
                         <button className="bg-transparent px-1">
-                            <svg class=" fill-[#03A9F4] hover:fill-black" 
+                            <svg className=" fill-[#03A9F4] hover:fill-black" 
                             xmlns="http://www.w3.org/2000/svg" 
                             width="28" height="28" 
                             viewBox="0 0 16 16">
@@ -58,7 +64,7 @@ export default function Footer(){
                             </svg>
                         </button>
                         <button className="bg-transparent pl-1">
-                        <svg class=" fill-[#FF8A80] hover:fill-black" 
+                        <svg className=" fill-[#FF8A80] hover:fill-black" 
                         xmlns="http://www.w3.org/2000/svg" 
                         data-name="Layer 1" 
                         width="28" height="28" 

@@ -1,6 +1,11 @@
 import { Container, Row, Col, Button } from "react-bootstrap";
 
 export default function ReservationContainer(){
+
+    const handleClick = () =>{
+        window.location.href = '/reservations';
+    }
+
     return(
         <Container fluid className="py-16 bg-[url('./img/cafe.png')] bg-cover bg-no-repeat">
             <Row>
@@ -11,7 +16,8 @@ export default function ReservationContainer(){
                 </Row>
                 <Row className="">
                     <Col className='text-center text-lg fw-bold my-2'>
-                        <Button className="my-5 p-2 border-4 fw-bold border-black hover:border-black rounded-none bg-transparent text-black">
+                        <Button onClick={handleClick}
+                        className="my-5 p-2 border-4 fw-bold border-black hover:border-black rounded-none bg-transparent text-black">
                             BOOK A TABLE NOW
                         </Button>
                         <br />

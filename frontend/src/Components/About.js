@@ -13,6 +13,7 @@ export default function About(){
                 description={" Lorem ipsum dolor sit amet consectetur adipisicing elit. Blanditiis beatae saepe cupiditate eaque, ratione vel facere iure tempore veniam nobis. Maxime vel corrupti repellendus similique?"} 
                 left={false}
                 button={"DISCOVER MORE"}
+                click={'/about'}
                 val={6}
             />
     

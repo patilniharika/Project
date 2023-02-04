@@ -3,7 +3,11 @@ import { Col, Container, Row, Button } from "react-bootstrap";
 import star from "../svg/star1.svg";
 
 export default function PageInfo(props) {
-    // const info = true
+
+    const handleClick = () =>{
+        window.location.href = '/menus';
+    }
+
     return (
         <Container className="h-4/5 contain" fluid>
             <Row className="mx-0">
@@ -19,11 +23,13 @@ export default function PageInfo(props) {
                         <div className={`${props.info? 'show': ' show d-none'}`}>
                             {props.infoline} 
                         </div>
-                        <Button 
+                        <Button onClick={handleClick}
                         className={`${props.buttonShow? 
                         'space p-2 border-2 fw-bold border-black hover:border-black rounded-none bg-transparent text-black' : 
                         'd-none' }`} >
+        
                             DISCOVER MENUS
+
                         </Button>
                     </Col>
                 </Row>

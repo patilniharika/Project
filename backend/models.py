@@ -18,4 +18,4 @@ class User(models.Model):
     name = models.CharField(max_length=100)
     email = models.EmailField()
     password = models.CharField(max_length=255)
-    phone = models.CharField(validators=[phone_regex], max_length=10)
+    phone = models.CharField(validators=[phone_regex], max_length=10, unique=True)

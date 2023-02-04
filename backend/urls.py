@@ -4,4 +4,5 @@ from .views import *
 urlpatterns  = [
     path('table', BookTableView.as_view()),
     path('user', UserView.as_view()),
+    path('login', LoginView.as_view()),
 ]

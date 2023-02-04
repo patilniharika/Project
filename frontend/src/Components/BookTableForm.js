@@ -4,7 +4,7 @@ import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
 
 export default function BookTableForm() {
     const count = ["No. of Person", 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-    const count_person = count.map((n) => <option className=" ">{n}</option>);
+    const count_person = count.map((n, index) => <option key={index} className=" ">{n}</option>);
     const [name, setName] = useState("");
     const [phone, setPhone] = useState(0);
     const [person, setPerson] = useState(0);
@@ -19,16 +19,16 @@ export default function BookTableForm() {
             time: time,
             phone: phone,
         })
-            .then(function (response) {
-                console.log(response);
-            })
-            .catch(function (error) {
-                console.log(error);
-            });
+        .then(function (response) {
+            console.log(response);
+        })
+        .catch(function (error) {
+            console.log(error);
+        });
     };
 
     let handleSubmit = async (e) => {
-        postData()
+        postData();
         e.preventDefault();
     };
 

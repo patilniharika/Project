@@ -68,27 +68,43 @@ export default function NavigationMenu(props) {
 
                         <Dropdown.Menu className="mx-10" show={show} onMouseLeave={handleClose}>
 
-                            <Dropdown.Item className="px-4" href="/menus">
+                            <Dropdown.Item className="px-4">
 
-                                PATISSERIE
+                                <NavLink to= "/menus" >
+
+                                    PATISSERIE
+
+                                </NavLink>
                                 
                             </Dropdown.Item>
 
                             <Dropdown.Item className="px-4">
 
-                                CUPCAKES
+                                <NavLink to= "/menus" >
+
+                                    CUPCAKES
+                                    
+                                </NavLink>
+                                
+                            </Dropdown.Item>
+
+                            <Dropdown.Item className="px-4" >
+
+                                <NavLink to= "/menus" >
+
+                                    DONUTS
+                                    
+                                </NavLink>
 
                             </Dropdown.Item>
 
-                            <Dropdown.Item className="px-4">
+                            <Dropdown.Item className="px-4" >
 
-                                DONUTS
+                                <NavLink to= "/menus" >
 
-                            </Dropdown.Item>
-
-                            <Dropdown.Item className="px-4">
-
-                                SHAKES
+                                    SHAKES
+                                    
+                                </NavLink>
 
                             </Dropdown.Item>
 
@@ -132,9 +148,13 @@ export default function NavigationMenu(props) {
 
                         <Dropdown.Menu className="mx-10" show={show1} onMouseLeave={handleClose1}>
 
-                            <Dropdown.Item className="px-4" href="/contact">
+                            <Dropdown.Item className="px-4">
 
-                                NEWSLETTER
+                                <NavLink to= "/contact" >
+
+                                    NEWSLETTER
+
+                                </NavLink>
 
                             </Dropdown.Item>
 

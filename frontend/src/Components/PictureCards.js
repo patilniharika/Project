@@ -7,7 +7,7 @@ import d4 from "../img/dessert8.png";
 
 export default function PictureCards(){
     return(
-        <Container fluid className="p-0 g-0" xs style={{}}>
+        <Container fluid className="p-0 g-0">
             <Row className=" p-0 g-0" xs >
                 <Col lg={5}>
                     <Image src={d1} className=" g-0 h-full" fluid />
