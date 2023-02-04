@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import ColImage from './ColImage';
 
@@ -10,10 +11,6 @@ export default function Pictureleft(props) {
 
     if(items.length === 1){
         mdVal = 12;
-    }
-
-    const handleClick = () =>{
-        window.location.href = props.click;
     }
 
     const ItemList = () => {
@@ -50,9 +47,11 @@ export default function Pictureleft(props) {
                         {props.description}
                     </p>
 
-                    <button onClick={handleClick}
+                    <button 
                     className="my-4 font-bold text-black bg-transparent border-b-4 hover:border-b-0 border-b-rose-500">
+                        <Link to={props.click} relative="path">
                         {props.button}
+                        </Link>
                     </button>
 
                 </Col>

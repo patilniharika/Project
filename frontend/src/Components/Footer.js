@@ -1,12 +1,9 @@
 import { Col, Container, Row } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 //  bg-[url('./img/bg11.png')] bg-cover bg-no-repeat
 
 export default function Footer(){
-
-    const handleClick = () =>{
-        window.location.href = '/reservations';
-    }
 
     return(
         <Container fluid className="pt-16 px-10 md:px-16">
@@ -32,9 +29,11 @@ export default function Footer(){
                 <Col md={true}>
                     RESERVE
                     <br />
-                    <button onClick={handleClick}
+                    <button
                     className="my-4 text-base bg-transparent border-b-4 hover:border-0 border-b-rose-500">
+                        <Link to='/reservations' className="hover:text-black">
                         DISCOVER MORE
+                        </Link>
                     </button>
                 </Col>
                 <Col md={true} className="">

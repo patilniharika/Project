@@ -1,12 +1,9 @@
 import { Col, Container, Row, Button } from "react-bootstrap";
+import { Link } from "react-router-dom";
 
 import star from "../svg/star1.svg";
 
 export default function PageInfo(props) {
-
-    const handleClick = () =>{
-        window.location.href = '/menus';
-    }
 
     return (
         <Container className="h-4/5 contain" fluid>
@@ -23,12 +20,13 @@ export default function PageInfo(props) {
                         <div className={`${props.info? 'show': ' show d-none'}`}>
                             {props.infoline} 
                         </div>
-                        <Button onClick={handleClick}
+                        <Button 
                         className={`${props.buttonShow? 
                         'space p-2 border-2 fw-bold border-black hover:border-black rounded-none bg-transparent text-black' : 
                         'd-none' }`} >
-        
-                            DISCOVER MENUS
+                            <Link to='/menus'  className="hover:text-black">
+                                DISCOVER MENUS
+                            </Link>
 
                         </Button>
                     </Col>
