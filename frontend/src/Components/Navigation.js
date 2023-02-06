@@ -15,32 +15,37 @@ import PageInfo from "./PageInfo";
 import NavigationMenu from "./NavigationMenu";
 import Login from "./Login";
 import SessionContext from "./Context";
+import User from "./User";
 
 export default function Navigation(props) {
 
-    var display = false;
+    let display = false;
 
     const user = useContext(SessionContext);
 
     if (user.user == null) {
 
-        display = false;
+       ;
     }
     else {
         display = true;
     }
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const [showBookTable, setShowBookTable] = useState(false);
+    const handleBookTableClose = () => setShowBookTable(false);
+    const handleShowBookTable = () => setShowBookTable(true);
 
-    const [show1, setShow1] = useState(false);
-    const handleClose1 = () => setShow1(false);
-    const handleShow1 = () => setShow1(true);
+    const [showNav, setShowNav] = useState(false);
+    const handleNavClose = () => setShowNav(false);
+    const handleShowNav = () => setShowNav(true);
 
-    const [show2, setShow2] = useState(false);
-    const handleClose2 = () => setShow2(false);
-    const handleShow2 = () => setShow2(true);
+    const [showLogin, setShowLogin] = useState(false);
+    const handleLoginClose = () => setShowLogin(false);
+    const handleShowLogin = () => setShowLogin(true);
+
+    const [showUser, setShowUser] = useState(false);
+    const handleUserClose = () => setShowUser(false);
+    const handleShowUser = () => setShowUser(true);
 
     return (
         <Container fluid className="bg-cover bg-no-repeat container1 g-0 position-relative"
@@ -69,15 +74,17 @@ export default function Navigation(props) {
 
             <Navbar expand='xl' className="mx-4">
 
-                <NavbarBrand>
-                    <Image src={logo} fluid className="h-12 md:h-20" />
+                <NavbarToggle aria-controls="navMenu" className="border-0" onClick={handleShowNav} />
+
+                <NavbarBrand className="mr-auto">
+                    <Image src={logo} fluid className="h-10 md:h-20" />
                 </NavbarBrand>
 
-                <NavigationMenu id="navMenu" show={show1} hide={handleClose1} />
+                <NavigationMenu id="navMenu" show={showNav} hide={handleNavClose} />
 
                 <div className="d-flex">
 
-                    <Button onClick={handleShow2}
+                    <Button onClick={handleShowLogin}
                         variant='white'
                         className={`rounded-none text-sm font-medium p-2 d-block ml-auto w-max
                         ${display ? 'd-none' : ''}`}
@@ -88,10 +95,10 @@ export default function Navigation(props) {
 
                     </Button>
 
-                    <Login show={show2} hide={handleClose2} />
+                    <Login show={showLogin} hide={handleLoginClose} />
 
 
-                    <Button onClick={handleShow}
+                    <Button onClick={handleShowBookTable}
                         variant='white'
                         className="border-4 border-black rounded-none text-sm font-medium p-2 d-none d-md-block ml-auto w-max sm:mx-2" >
 
@@ -99,7 +106,9 @@ export default function Navigation(props) {
 
                     </Button>
 
-                    <Button
+                    <BookTable show={showBookTable} hide={handleBookTableClose} className='mx-24' />
+
+                    <Button onClick={handleShowUser}
                         variant='white'
                         className={`rounded-none text-sm font-medium p-2 d-block ml-auto w-max
                         ${display ? '' : 'd-none'}`}
@@ -109,6 +118,8 @@ export default function Navigation(props) {
                         <img src={user1} alt="" />
 
                     </Button>
+
+                    <User show={showUser} hide={handleUserClose} />
 
                     <Button
                         variant='white'
@@ -121,9 +132,6 @@ export default function Navigation(props) {
 
                     </Button>
 
-                    <BookTable show={show} hide={handleClose} className='mx-24' />
-
-                    <NavbarToggle aria-controls="navMenu" className="border-0" onClick={handleShow1} />
                 </div>
             </Navbar>
 

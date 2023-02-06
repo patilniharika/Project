@@ -17,9 +17,12 @@ export default function NavigationMenu(props) {
 
     return (
         // className=' bg-gradient-to-t xl:bg-transparent from-rose-400 '>
-        <NavbarOffcanvas placement='end' show={props.show} onHide={props.hide} >
+        <NavbarOffcanvas placement='start' 
+            className="bg-rose-100"
+            show={props.show} 
+            onHide={props.hide} >
 
-            <OffcanvasHeader className="my-8" closeButton>
+            <OffcanvasHeader className="pb-0" closeButton>
 
                 <NavbarBrand>
                     <Image src={logo} fluid className="h-24" />
@@ -29,14 +32,14 @@ export default function NavigationMenu(props) {
 
             </OffcanvasHeader>
 
-            <OffcanvasBody className="lg:mx-auto">
+            <OffcanvasBody className="xl:mx-auto">
 
                 <Nav>
 
                     <NavLink to="/" 
                     className={(navLink) => (navLink.isActive ? 
-                        'mx-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
-                        'mx-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
+                        'mx-4 my-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
+                        'mx-4 my-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
 
                         HOME
 
@@ -44,15 +47,15 @@ export default function NavigationMenu(props) {
 
                     <NavLink to="/about" 
                     className={(navLink) => (navLink.isActive ? 
-                        'mx-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
-                        'mx-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
+                        'mx-4 my-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
+                        'mx-4 my-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
 
                         ABOUT
 
                     </NavLink>
 
                     <Dropdown >
-                        <Dropdown.Toggle className="btn1 rounded-none mx-4 p-0"
+                        <Dropdown.Toggle className="btn1 rounded-none mx-4 p-0 my-4 "
                         onMouseOver={handleShow}>
 
                             <NavLink to="/menus"
@@ -114,8 +117,8 @@ export default function NavigationMenu(props) {
 
                     <NavLink to='/reservations' 
                     className={(navLink) => (navLink.isActive ? 
-                                'mx-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
-                                'mx-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
+                                'mx-4 my-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
+                                'mx-4 my-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
 
                         RESERVATIONS
 
@@ -123,8 +126,8 @@ export default function NavigationMenu(props) {
 
                     <NavLink to="/news" 
                     className={(navLink) => (navLink.isActive ? 
-                        'mx-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
-                        'mx-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
+                        'mx-4 my-4 py-0 xl:border-b-4 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium' : 
+                        'mx-4 my-4 py-0 xl:hover:border-b-2 border-rose-500 hover:text-[rgba(0,0,0,0.55)] text-xl font-medium')}>
 
                         NEWS
 
@@ -132,7 +135,7 @@ export default function NavigationMenu(props) {
 
                     <Dropdown>
 
-                        <Dropdown.Toggle className="btn1 rounded-none mx-4 p-0"
+                        <Dropdown.Toggle className="btn1 rounded-none mx-4 p-0 my-4 "
                         onMouseOver={handleShow1}>
 
                             <NavLink to="/contact"

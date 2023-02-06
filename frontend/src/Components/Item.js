@@ -1,21 +1,43 @@
+import { useState } from "react";
 import { Card, Row, ButtonGroup, Button } from "react-bootstrap";
+import Login from "./Login";
 
 export default function Item(props){
+
+    const [show, setShow] = useState(false);
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+    const data = localStorage.getItem('user') || null;
+
+    const add = () => {
+        if(data){
+            ;
+        }
+        else{
+            handleShow();
+        }
+    }
+    
+
     return(
         <>
         <Card className="bg-transparent">
             <Card.Img src={props.image} className="p-8" />
             <Card.Body>
-                    <p className="head text-lg sm:text-3xl" >
-                        Croissants
-                    </p>
-                    
+                <p className="head text-lg sm:text-3xl" >
+                    Croissants
+                </p>
             </Card.Body>
             <Card.Footer className="bg-transparent flex justify-center border-0">
                 <ButtonGroup >
-                    <Button className="bg-rose-300 border-0">
+                    <Button onClick={add}
+                        className="bg-rose-300 border-0">
                         +
                     </Button>
+
+                    <Login show={show} hide={handleClose} />
+
                     <Button className="bg-rose-500 border-0">
                         ADD
                     </Button>
