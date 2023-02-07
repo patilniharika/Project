@@ -32,7 +32,7 @@ function App() {
       userDetail(JSON.parse(data));
     }
     else{
-      ;
+      userDetail(null);
     }
   }, [user]);  
 

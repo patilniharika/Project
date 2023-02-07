@@ -17,7 +17,7 @@ export default function NavigationMenu(props) {
 
     return (
         // className=' bg-gradient-to-t xl:bg-transparent from-rose-400 '>
-        <NavbarOffcanvas placement='start' 
+        <NavbarOffcanvas placement='top' 
             className="bg-rose-100"
             show={props.show} 
             onHide={props.hide} >
