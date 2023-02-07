@@ -25,7 +25,7 @@ SECRET_KEY = 'django-insecure-@4i1u!igbpfu+!!*19ue-1023o$$h0plzpks9t^z!wepc4!p78
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -41,11 +41,20 @@ INSTALLED_APPS = [
     'backend',
     'rest_framework',
     'corsheaders',
+    # 'channels',
 ]
 
 # added new
 
 CORS_ORIGIN_ALLOW_ALL = True
+
+# CHANNELS_LAYERS = {
+#      'default' : {
+#         'BACKEND' : 'channels.layers.InMemoryChannelLayer',
+#     },
+# }
+
+# ASGI_APPLICATION = 'dessertShop.routing.application'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
