@@ -76,7 +76,9 @@ export default function BookTableForm() {
                 </Col>
             </Row>
             <Row>
-                <Button className="text-black mx-auto w-32 bg-rose-300 border-transparent hover:border-white rounded-none fw-bold hover:bg-rose-300" type="submit">
+                <Button 
+                    className="text-black mt-8 mx-auto w-32 bg-rose-300 border-transparent hover:border-white rounded-none fw-bold hover:bg-rose-300" 
+                    type="submit">
                     Book Now
                 </Button>
             </Row>

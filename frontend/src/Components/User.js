@@ -1,9 +1,14 @@
+import { useContext } from "react";
 import { Button, Offcanvas, OffcanvasBody, OffcanvasHeader, OffcanvasTitle } from "react-bootstrap";
+import { SessionContext } from "./Context";
 
 export default function User(props){
 
+    const {user, setUser} = useContext(SessionContext);
+
     const click = () => {
         localStorage.clear();
+        setUser(null);
         window.location.href  = '/';
     }
 
@@ -19,7 +24,7 @@ export default function User(props){
             <OffcanvasTitle className="bg-rose-300 p-4 text-2xl">
                 <div className="font-bold">
                     HELLO,&nbsp;
-                    {JSON.parse(localStorage.getItem('user'))}
+                    {user}
                 </div>
                 <div className="">
                     YOUR ACCOUNT

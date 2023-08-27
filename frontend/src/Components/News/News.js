@@ -4,9 +4,9 @@ import ReservationContainer from "../ReservationContainer";
 
 import { useRef } from 'react';
 
-import m1 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert52.png";
-import m2 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert51.png";
-import m3 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert50.png";
+import m1 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert52.png";
+import m2 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert51.png";
+import m3 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert50.png";
 import { Container, Row } from "react-bootstrap";
 import Pictureleft from "../Pictureleft";
 

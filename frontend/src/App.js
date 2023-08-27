@@ -18,7 +18,7 @@ import Menus from './Components/Menus/Menus';
 import Reservations from './Components/Reservations/Reservations';
 import News from './Components/News/News';
 import Contact from './Components/Contact/Contact';
-import SessionContext from './Components/Context';
+import {SessionContext} from './Components/Context';
 
 function App() {
 

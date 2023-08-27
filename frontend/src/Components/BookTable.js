@@ -6,11 +6,11 @@ import BookTableForm from "./BookTableForm";
 
 export default function BookTable(props){ 
     return(
-        <Offcanvas show={props.show} onHide={props.hide} placement='top' className="m-auto bg-[url('./img/cafe.png')] bg-cover bg-no-repeat" >
+        <Offcanvas show={props.show} onHide={props.hide} placement='top' className="offcanvas1 m-auto bg-[url('./img/cafe.png')] bg-cover bg-no-repeat" >
             <OffcanvasHeader closeButton className="mx-12">
                 <Image src={logo} fluid className="h-24" />
             </OffcanvasHeader>
-            <OffcanvasBody >
+            <OffcanvasBody className="py-12">
                 <div className="text-center fw-bold text-7xl text-black">
                     Book A Table
                 </div>

@@ -7,17 +7,17 @@ import Navigation from '../Navigation';
 import Pictureleft from '../Pictureleft';
 import ReservationContainer from '../ReservationContainer';
 
-import cafe from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/cafe1.png";
-import dessert1 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert11.png";
-import d1 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert15.png";
-import d2 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert20.png";
-import d3 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert26.png";
-import d4 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert7.png";
-import m1 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert42.png";
-import m2 from "C:/Users/Admin/Desktop/dessertShop/frontend/src/img/dessert45.png";
+import cafe from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/cafe1.png";
+import dessert1 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert11.png";
+import d1 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert15.png";
+import d2 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert20.png";
+import d3 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert26.png";
+import d4 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert7.png";
+import m1 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert42.png";
+import m2 from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/img/dessert45.png";
 
 
-import medal from "C:/Users/Admin/Desktop/dessertShop/frontend/src/svg/medal.svg";
+import medal from "C:/Users/Admin/Desktop/Desktop/Projects/dessertShop/frontend/src/svg/medal.svg";
 
 export default function AboutPage(props) {
 

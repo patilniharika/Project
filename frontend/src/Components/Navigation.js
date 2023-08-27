@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { Button, Image, Navbar, NavbarBrand, Container, Row, Col } from "react-bootstrap";
+import { Button, Image, Navbar, NavbarBrand, Container, Row, Col, Badge } from "react-bootstrap";
 import NavbarToggle from "react-bootstrap/esm/NavbarToggle";
 
 import location from "../svg/location1.svg";
@@ -14,14 +14,19 @@ import BookTable from "./BookTable";
 import PageInfo from "./PageInfo";
 import NavigationMenu from "./NavigationMenu";
 import Login from "./Login";
-import SessionContext from "./Context";
+import { CartContext, SessionContext} from "./Context";
 import User from "./User";
+import Cart from "./Cart";
 
 export default function Navigation(props) {
 
     let display = false;
 
     const user = useContext(SessionContext);
+
+    const cartCount = useContext(CartContext);
+    const quant = cartCount.cart;
+
 
     if (user.user == null) {
 
@@ -46,6 +51,10 @@ export default function Navigation(props) {
     const [showUser, setShowUser] = useState(false);
     const handleUserClose = () => setShowUser(false);
     const handleShowUser = () => setShowUser(true);
+
+    const [showCart, setShowCart] = useState(false);
+    const handleCartClose = () => setShowCart(false);
+    const handleShowCart = () => setShowCart(true);
 
     return (
         <Container fluid className="bg-cover bg-no-repeat container1 g-0 position-relative"
@@ -121,16 +130,23 @@ export default function Navigation(props) {
 
                     <User show={showUser} hide={handleUserClose} />
 
-                    <Button
-                        variant='white'
-                        className={`rounded-none text-sm font-medium ml-auto p-2 d-block w-max 
-                        ${display ? '' : 'd-none'}`}
-                        role="tooltip"
-                        title="CART">
+                    <div className='position-relative d-inline-block'>
 
-                        <img src={cart} alt="" />
+                        <Button onClick={handleShowCart}
 
-                    </Button>
+                            variant='white'
+                            className={`rounded-none text-sm font-medium ml-auto p-2 d-block w-max 
+                            ${display ? '' : 'd-none'}`}
+                            role="tooltip"
+                            title="CART">
+                            <img src={cart} alt="" />
+                            
+                        </Button>
+                        {quant && <Badge className="position-absolute top-0 end-0" bg="none" pill
+                        style={{backgroundColor: "rgb(244 63 94)"}}> {quant.quantity} </Badge>}
+                    </div>
+                    
+                    <Cart show={showCart} hide={handleCartClose} />
 
                 </div>
             </Navbar>

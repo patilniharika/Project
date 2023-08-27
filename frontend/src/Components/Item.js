@@ -1,67 +1,180 @@
-import { useState } from "react";
-import { Card, Row, ButtonGroup, Button } from "react-bootstrap";
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
+import { Alert, Button, ButtonGroup, Card } from "react-bootstrap";
+import { CartContext, SessionContext } from "./Context";
 import Login from "./Login";
 
-export default function Item(props){
+export default function Item(props) {
 
-    const [show, setShow] = useState(false);
-    const handleClose = () => setShow(false);
-    const handleShow = () => setShow(true);
+    const user = useContext(SessionContext);
+    const cartContext = useContext(CartContext);
 
-    const data = localStorage.getItem('user') || null;
+    const [login, setLogin] = useState(false);
 
-    const add = () => {
-        if(data){
-            ;
-        }
-        else{
-            handleShow();
+    const handleAdd = () => {
+        if(user.user==null){
+            setLogin(true);
         }
     }
-    
+    const user_id = localStorage.getItem('userid');
+    const menu_item_id = props.id;
+    const [fetchQuant, setFetchQuant] = useState(true)
 
+    const [quant, setQuant] = useState(0);
+    const [cost, setCost] = useState(0.00);
+    const [alert, setAlert] = useState('');
+    const [showAlert, setShowAlert] = useState(false);
+
+    const add = () =>{
+        axios.post('http://127.0.0.1:8000/home/cart', {
+           user_id: user_id,
+           menu_item_id,
+        })
+        .then( (response) => {
+            setAlert(response.data)
+            setShowAlert(true);
+            setTimeout(() => {
+                setShowAlert(false);
+                setAlert('');
+            }, 4000)
+            setFetchQuant(true);
+        } )
+    }
+
+    const subtract = () => {
+        if (quant > 0) {
+            if(quant-1 === 0){
+                axios.delete('http://127.0.0.1:8000/home/cart', {
+                data: {
+                    user_id: user_id,
+                    menu_item_id,
+                },
+                })
+                .then( (response) => {
+                    setAlert(response.data)
+                    setShowAlert(true);
+                    setTimeout(() => {
+                        setShowAlert(false);
+                        setAlert('');
+                    }, 4000)
+                    setFetchQuant(true);
+                })
+            }
+            else{
+                axios.post('http://127.0.0.1:8000/home/cart', {
+                user_id: user_id,
+                menu_item_id,
+                quantity: -1, // Subtract one from the quantity
+                })
+                .then( (response) => {
+                    setAlert(response.data)
+                    setShowAlert(true);
+                    setTimeout(() => {
+                        setShowAlert(false);
+                        setAlert('');
+                    }, 4000)
+                    setFetchQuant(true);
+                })
+            }
+        }
+    };
+
+    const handleClose = () => setLogin(false);
+
+    const [img, setImg] = useState([]);
+
+    useEffect(() => {
+        axios.get(`http://127.0.0.1:8000/home/menuimg/${menu_item_id}/`)
+        .then((response) => {
+            const url = `http://127.0.0.1:8000/${response.data.img}`;
+            setImg(url)
+        });
+
+    }, [ menu_item_id ]);
+
+    useEffect(() => {
+
+        if(fetchQuant){
+            axios.get('http://127.0.0.1:8000/home/cart/detail', {
+                params: {
+                    user_id: user_id,
+                    menu_id: menu_item_id,
+                    quantity:1
+            }
+            })
+            .then( (response) => {
+                setQuant(response.data[0].quantity)
+                setCost(response.data[0].price)
+                setFetchQuant(false)
+            } )
+        }
+
+    }, [user_id, menu_item_id, fetchQuant]);
+
+    useEffect( () => {
+        if(fetchQuant){
+            axios.get('http://127.0.0.1:8000/home/cart/quantity', {
+                params: {
+                    user_id: user_id,
+                }
+            })
+            .then((response) => {
+                const newQuant = response.data[0];
+                cartContext.setCart(newQuant); // Using the setCart function from context
+                setFetchQuant(false)
+            });
+        }
+    }, [user_id, fetchQuant, cartContext] )
+    
     return(
         <>
-        <Card className="bg-transparent">
-            <Card.Img src={props.image} className="p-8" />
-            <Card.Body>
-                <p className="head text-lg sm:text-3xl" >
-                    Croissants
-                </p>
-            </Card.Body>
-            <Card.Footer className="bg-transparent flex justify-center border-0">
-                <ButtonGroup >
-                    <Button onClick={add}
-                        className="bg-rose-300 border-0">
-                        +
-                    </Button>
+        {showAlert && (
+        <Alert className=" border-0 position-fixed right-10 bottom-0 text-center animate-pulse transition-100 ease-out w-52 bg-red-500 text-white fw-bold" 
+        onClose={() => setShowAlert(false)} >
+            {alert}
+        </Alert>
+        )}
 
-                    <Login show={show} hide={handleClose} />
-
-                    <Button className="bg-rose-500 border-0">
-                        ADD
-                    </Button>
-                    <Button className="bg-rose-300 border-0">
-                        -
-                    </Button>
-                </ButtonGroup>
+        <Card className="border-rose-800 border-2 bg-transparent" >
+            <Card.Header className="border-rose-800 bg-transparent text-center text-rose-800 fw-bold">
+                {props.name}
+            </Card.Header>
+            <Card.Img src={img} className="h-64 object-cover rounded-none" />
+            {/* <Card.Body className="bg-rose-400">
+                    {props.desc}
+            </Card.Body> */}
+            <Card.Footer className="bg-transparent text-rose-800 border-rose-800 fw-bold d-flex justify-content-between align-items-center">
+                <div>
+                    $ {cost}
+                </div>
+                { user.user? 
+                    (
+                        <ButtonGroup>
+                            <Button onClick={add}
+                            className="bg-rose-600 border-0 hover:bg-rose-800 text-white py-1 px-3" >
+                                +
+                            </Button>
+                            <Button className="bg-rose-600 border-0 text-white py-1 px-3" >
+                                {quant}
+                            </Button>
+                            <Button onClick={subtract}
+                            className="bg-rose-600 border-0 hover:bg-rose-800 text-white py-1 px-3" >
+                                -
+                            </Button>
+                        </ButtonGroup>
+                    )
+                    :(
+                    <button onClick={handleAdd}
+                        className="bg-rose-600 border-0 hover:bg-rose-800 text-white py-1 px-3 rounded" >
+                        Add
+                    </button>)
+                    
+                }
             </Card.Footer>
-            <Row>
-                
-                {/* <Col md={5} className="">
-                    <Image src={props.image} className="h-fit w-fit mx-8 my-8" fluid />
-                </Col>
-                <Col md={6} className="">
-                    <p className="text-2xl head mx-8 my-8" >
-                        Croissants
-                    </p>
-                </Col>
-                <button className="my-4 mx-auto text-2xl w-32 font-bold text-black flex items-center justify-center bg-rose-500">
-                    <svg className="font-bold" xmlns="http://www.w3.org/2000/svg" width="16" height="16"><path fill="none" fill-rule="evenodd" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 1v14M1 8h14"/></svg>
-                   ADD
-                </button> */}
-            </Row>
         </Card>
+        {login && <Login show={login} hide={handleClose} /> }
+
         </>
-    );
+    )
+    
 }

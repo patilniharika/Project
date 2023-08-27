@@ -8,14 +8,17 @@ import './index.css';
 
 import App from './App';
 import SessionProvider from './Components/SessionProvider';
+import CartProvider from './Components/CartProvider';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter> 
+   <BrowserRouter> 
     <SessionProvider>
-      <App />
+      <CartProvider>
+        <App />  
+      </CartProvider>    
     </SessionProvider>
    </BrowserRouter> 
   </React.StrictMode>

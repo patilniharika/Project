@@ -1,11 +1,14 @@
-import { useState, React } from "react";
+import { useState, React, useContext } from "react";
 import axios from "axios";
 import { Button, Col, Form, FormControl, Row } from "react-bootstrap";
+import { SessionContext } from "./Context";
 
 export default function SignupForm() {
 
+    const {user, setUser} = useContext(SessionContext)
+
     const [name, setName] = useState("");
-    const [phone, setPhone] = useState("");
+    const [phone, setPhone] = useState();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState(null);
@@ -76,7 +79,11 @@ export default function SignupForm() {
                     setError("Wrong Password please re-enter it.")
                 }
                 else{
-                    localStorage.setItem('user', JSON.stringify(response1.data));
+                    const user = response1.data[0];
+                    const id = response1.data[1];
+                    setUser(user);
+                    localStorage.setItem('user', JSON.stringify(user));
+                    localStorage.setItem('userid', id);
                     window.location.href = '/';
                 }
             } catch (err){
@@ -99,7 +106,7 @@ export default function SignupForm() {
                             className={`bg-transparent rounded-none border-transparent border-b-black my-4 ${showLogin? 'd-none' : ''}`} />
                     </Row>
                     <Row>
-                        <FormControl type="text"
+                        <FormControl type="tel"
                             placeholder="Enter Phone Number"
                             value={phone}
                             onChange={(e) => setPhone(e.target.value)} 

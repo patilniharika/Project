@@ -18,6 +18,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  /* background-color: rgb(255 241 242); */
   background-color: rgb(255 228 230);
 }
 
@@ -26,9 +27,9 @@ code {
     monospace;
 }
 
-.offcanvas.offcanvas-top { 
-  height: max-content;
-  width: 90vw;
+.offcanvas1{ 
+  height: max-content !important;
+  width: 90vw !important;
 }
 
 .form-control::placeholder {
